@@ -28,7 +28,7 @@ function loadAllData() {
             data = JSON.parse(JSON.stringify(data));
             $.each(data.data, function (idx, elem) {
                 if(elem.company !== undefined && elem.cms !== undefined)
-                    table.row.add([elem.company.name, elem.company.address.country, elem.company.turnover, elem.cms.name, elem.cms.version, elem.cms.domain]).draw().node();
+                    table.row.add([elem.company.name, elem.company.country, elem.company.turnover, elem.cms.name, elem.cms.version, elem.cms.domain]).draw().node();
             });
         }
     });

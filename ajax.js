@@ -5,21 +5,6 @@ function envoieAjax(param)
     $.ajax(param);
 }
 
-function getAllData()
-{
-    $('#cache').toggleClass('dnone');
-    envoieAjax({
-        type: 'GET',
-        url: "allData",
-        success: function(data) {
-            console.log(data);
-        },
-        complete: function () {
-            $('#cache').toggleClass('dnone');
-        }
-    });
-}
-
 function toggleFormAjout()
 {
    $('#containerTable, #formAjout').toggleClass('dnone');
