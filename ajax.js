@@ -10,7 +10,7 @@ function toggleFormAjout(clear_data_id)
     var form = $('#formAjout'),
         graphs = $('#chartDiv'),
         table = $('#containerTable');
-    
+
     if(typeof clear_data_id === "undefined" || clear_data_id) {
         form[0].reset();
         form.removeAttr('data-id');
@@ -25,6 +25,7 @@ function toggleFormAjout(clear_data_id)
         if(!graphs.hasClass('dnone')) {
             graphs.addClass('dnone');
         }
+
     }
     else {
         form.addClass('dnone');
