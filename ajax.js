@@ -36,7 +36,7 @@ function createData()
                 alert('Error '+data.status+' : '+data.message);
             }
             else {
-                form.reset();
+                $('input').val('');
                 alert('Success : '+data.message);
             }
         },
