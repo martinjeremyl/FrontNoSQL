@@ -17,12 +17,17 @@
             <li class="nav-item active">
                 <a class="nav-link" href="javascript:toggleFormAjout()">Création</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="javascript:toggleFormAjout()">Graphiques</a>
+            </li>
         </ul>
     </div>
 </nav>
-<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+<div id="chartDiv" class="chart-container" style="position: relative; height:40vh; width:80vw">
     <canvas id="cmsChart"></canvas>
-</div><button class="btn btn-primary" onClick="loadCmsStats()">Test</button>
+    <button class="btn btn-primary" onClick="loadCmsStats()">Test</button>
+</div>
+
 <form id="formAjout" class="row no-gutters dnone" onsubmit="return gestionData();">
     <h2 class="col-lg-11 offset-lg-1">CMS</h2>
     <label class="col-lg-2 offset-lg-1">Nom : <input id="nomCms" class="fright" type="text" name="cms$$name"></label>
