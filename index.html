@@ -20,7 +20,8 @@
         </ul>
     </div>
 </nav>
-
+<canvas id="cmsChart" width="400" height="400"></canvas>
+<button class="btn btn-primary" onClick="loadCmsStats()">Test</button>
 <form id="formAjout" class="dnone" onsubmit="return createData();">
     <h2>CMS</h2>
     <label>Nom : <input type="text" name="cms$$name"></label>
@@ -69,6 +70,6 @@
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="bootstrapDatatable.js"></script>
 <script src="dataTableFront.js"></script>
-<script src="https://cdnjs.com/libraries/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 </body>
 </html>
