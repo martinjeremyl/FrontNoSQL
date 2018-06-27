@@ -7,7 +7,10 @@ function envoieAjax(param)
 
 function toggleFormAjout()
 {
-    $('#formAjout')[0].reset();
+    var form = $('#formAjout');
+
+    form[0].reset();
+    form.attr('data-id', data._id.$oid);
     $('#containerTable, #formAjout').toggleClass('dnone');
 }
 
