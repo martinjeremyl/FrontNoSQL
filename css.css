@@ -21,3 +21,18 @@
 .navbar {
     margin-bottom: 3vh;
 }
+
+.page-item.active a {
+    background-color: #3f4246 !important;
+    border-color: #adb4bb !important;
+    color: #d3d3d3 !important;
+}
+
+.page-link {
+    color: #3b4754 !important;
+}
+.form-control:focus {
+    border-color: #172739 !important;
+    box-shadow: 0 0 0 0.2rem rgb(255, 255, 255) !important;
+}
+
