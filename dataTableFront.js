@@ -7,7 +7,7 @@ $(document).ready(function() {
             "infoEmpty": "Aucun résultats",
             "infoFiltered": "(_MAX_ lignes filtrés)",
             "paginate": {
-                "previous": "Precedent",
+                "previous": "Prêcêdent",
                 "next": "Suivant"
             },
             "search": "Rechercher :"
@@ -27,8 +27,10 @@ function loadAllData() {
             var table = $('#allData').DataTable();
             data = JSON.parse(JSON.stringify(data));
             $.each(data.data, function (idx, elem) {
+                var actionDiv = '';
                 if(elem.company !== undefined && elem.cms !== undefined)
-                    table.row.add([elem.company.name, elem.company.country, elem.company.turnover, elem.cms.name, elem.cms.version, elem.cms.domain]).draw().node();
+                    var divAction = "<i class=\"fas fa-pencil-alt\"></i><i class=\"fas fa-times\"></i>";
+                table.row.add([elem.company.name, elem.company.country, elem.company.turnover, elem.cms.name, elem.cms.version, elem.cms.domain, divAction]).draw().node();
             });
         }
     });
