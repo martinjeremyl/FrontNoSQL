@@ -8,7 +8,7 @@ function envoieAjax(param)
 function toggleFormAjout(clear_data_id)
 {
     var form = $('#formAjout'),
-        graphs = $('#'),
+        graphs = $('#chartDiv'),
         table = $('#containerTable');
     
     if(typeof clear_data_id === "undefined" || clear_data_id) {
@@ -16,7 +16,7 @@ function toggleFormAjout(clear_data_id)
         form.removeAttr('data-id');
     }
 
-    if(form.is(':visible')) {
+    if(!form.is(':visible')) {
         form.removeClass('dnone');
         if(!table.hasClass('dnone')) {
             table.addClass('dnone');
