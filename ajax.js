@@ -47,3 +47,51 @@ function createData()
 
     return false;
 }
+
+/**
+ * @todo
+ * {string} id
+ */
+function modifElem(id)
+{
+    $('#cache').toggleClass('dnone');
+    envoieAjax({
+        type: 'PUT',
+        url: id+"/updateData",
+        data: {},
+        success: function(data) {
+            if(parseInt(data.status) !== 1) {
+                alert('Error '+data.status+' : '+data.message);
+            }
+            else {
+                alert('Success : '+data.message);
+            }
+        },
+        complete: function () {
+            $('#cache').toggleClass('dnone');
+        }
+    });
+}
+
+/**
+ * {string} id
+ */
+function supprElement(id)
+{
+    $('#cache').toggleClass('dnone');
+    envoieAjax({
+        type: 'DELETE',
+        url: id+"/removeData",
+        success: function(data) {
+            if(parseInt(data.status) !== 1) {
+                alert('Error '+data.status+' : '+data.message);
+            }
+            else {
+                alert('Success : '+data.message);
+            }
+        },
+        complete: function () {
+            $('#cache').toggleClass('dnone');
+        }
+    });
+}
