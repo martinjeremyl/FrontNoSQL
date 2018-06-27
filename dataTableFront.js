@@ -17,6 +17,7 @@ $(document).ready(function() {
 });
 
 function loadAllData() {
+    $('#cache').toggleClass('dnone');
     envoieAjax({
         method: 'get',
         url: 'allData',
@@ -33,6 +34,9 @@ function loadAllData() {
                     var divAction = "<i class=\"fas fa-pencil-alt\" onclick=\"affichageModificationElem('"+elem._id.$oid+"')\"></i><i class=\"fas fa-times\" onclick=\"supprElement('"+elem._id.$oid+"')\"></i>";
                 table.row.add([elem.company.name, elem.company.country, elem.company.turnover, elem.cms.name, elem.cms.version, elem.cms.domain, divAction]).draw().node();
             });
+        },
+        complete: function () {
+            $('#cache').toggleClass('dnone');
         }
     });
 }
