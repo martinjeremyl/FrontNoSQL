@@ -7,31 +7,17 @@ function envoieAjax(param)
 
 function toggleFormAjout(clear_data_id)
 {
-    var form = $('#formAjout'),
-        graphs = $('#chartDiv'),
-        table = $('#containerTable');
+    var form = $('#formAjout');
 
     if(typeof clear_data_id === "undefined" || clear_data_id) {
         form[0].reset();
         form.removeAttr('data-id');
     }
 
-    if(!form.is(':visible')) {
-        form.removeClass('dnone');
-        if(!table.hasClass('dnone')) {
-            table.addClass('dnone');
-        }
-
-        if(!graphs.hasClass('dnone')) {
-            graphs.addClass('dnone');
-        }
-
-    }
-    else {
-        form.addClass('dnone');
-        table.removeClass('dnone');
-    }
+    $('#containerTable, #formAjout').toggleClass('dnone');
 }
+
+
 
 function gestionData()
 {
@@ -238,4 +224,30 @@ function loadCmsStats() {
             return false;
         }
     });
+}
+
+function toggleElementSinglePage(input)
+{
+    var element;
+
+    if($(input).data('page') === "graph") {
+        element = '#chartDiv';
+    }
+    else if($(input).data('page') === "form") {
+        element = '#formAjout';
+    }
+    else {
+        element = '#containerTable';
+    }
+
+    $('[data-role="elementSinglePage"]').each(function () {
+        if(!$(this).hasClass('dnone')) {
+            $(this).addClass('dnone');
+        }
+    });
+
+    $('[data-role="linkNavbar"]').removeClass('active');
+    $(input).addClass('active');
+
+    $(element).removeClass('dnone');
 }
