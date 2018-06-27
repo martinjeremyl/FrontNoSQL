@@ -5,39 +5,39 @@ function envoieAjax(param)
     $.ajax(param);
 }
 
-function getAllData()
-{
-    $('#cache').toggleClass('dnone');
-    envoieAjax({
-        type: 'GET',
-        url: "allData",
-        success: function(data) {
-            console.log(data);
-        },
-        complete: function () {
-            $('#cache').toggleClass('dnone');
-        }
-    });
-}
-
 function toggleFormAjout()
 {
-   $('#containerTable, #formAjout').toggleClass('dnone');
+    $('#containerTable, #formAjout').toggleClass('dnone');
 }
 
 function createData()
 {
     $('#cache').toggleClass('dnone');
-    console.log($('#formAjout').serializeArray());
+
+    var data = {},
+        form = $('#formAjout');
+
+    form.serializeArray().map(function(x) {
+        var res = x.name.split('$$');
+        if(typeof data[res[0]] === "undefined") {
+            data[res[0]] = {};
+        }
+        data[res[0]][res[1]] = x.value
+    });
+
     envoieAjax({
         type: 'POST',
         url: "newData",
         data: {
-            datas: $('#formAjout').serializeArray()
+            datas: JSON.stringify(data)
         },
         success: function(data) {
             if(parseInt(data.status) !== 1) {
                 alert('Error '+data.status+' : '+data.message);
+            }
+            else {
+                form.reset();
+                alert('Success : '+data.message);
             }
         },
         complete: function () {

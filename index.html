@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -11,10 +11,6 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">TP NoSQL</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -28,26 +24,24 @@
     </div>
 </nav>
 
-<input type="button" onclick="getAllData()" value="GOGOGO">
-
-<form id="formAjout" class="dnone" onsubmit="createData(); return false;">
+<form id="formAjout" class="dnone" onsubmit="return createData();">
     <h2>CMS</h2>
-    <label>Nom : <input type="text" name="cms[name]"></label>
-    <label>URL : <input type="text" name="cms[url]"></label>
-    <label>Version : <input type="text" name="cms[version]"></label>
-    <label>Domaine : <input type="text" name="cms[domain]"></label>
-    <label>Actifs : <input type="checkbox" name="cms[isActive]" value="1"></label>
-    <label>Plugins : <input type="text" name="cms[plugin]"></label>
+    <label>Nom : <input type="text" name="cms$$name"></label>
+    <label>URL : <input type="text" name="cms$$url"></label>
+    <label>Version : <input type="text" name="cms$$version"></label>
+    <label>Domaine : <input type="text" name="cms$$domain"></label>
+    <label>Actifs : <input type="checkbox" name="cms$$isActive" value="1"></label>
+    <label>Plugins : <input type="text" name="cms$$plugin"></label>
     <h2>Owner</h2>
-    <label>Mail : <input type="text" name="owner[email]"></label>
-    <label>Prénom : <input type="text" name="owner[firstname]"></label>
-    <label>Nom : <input type="text" name="owner[lastname]"></label>
-    <label>Téléphone : <input type="text" name="owner[phone]"></label>
+    <label>Mail : <input type="text" name="owner$$email"></label>
+    <label>Prénom : <input type="text" name="owner$$firstname"></label>
+    <label>Nom : <input type="text" name="owner$$lastname"></label>
+    <label>Téléphone : <input type="text" name="owner$$phone"></label>
     <h2>Company</h2>
-    <label>Nom : <input type="text" name="company[name]"></label>
-    <label>C.A. : <input type="text" name="company[turnover]"></label>
-    <label>Pays : <input type="text" name="company[pays]"></label>
-    <label>Adresse : <input type="text" name="company[location]"></label>
+    <label>Nom : <input type="text" name="company$$name"></label>
+    <label>C.A. : <input type="text" name="company$$turnover"></label>
+    <label>Pays : <input type="text" name="company$$pays"></label>
+    <label>Adresse : <input type="text" name="company$$location"></label>
 
     <input type="submit">
 </form>
@@ -57,7 +51,7 @@
         <thead>
         <tr>
             <th>Nom société</th>
-            <th>Ville société</th>
+            <th>Pays société</th>
             <th>Turnover société</th>
             <th>Nom du cms</th>
             <th>Version du cms</th>
