@@ -25,6 +25,7 @@ function loadAllData() {
         },
         success: function (data) {
             var table = $('#allData').DataTable();
+            table.clear().draw();
             data = JSON.parse(JSON.stringify(data));
             $.each(data.data, function (idx, elem) {
                 var actionDiv = '';

@@ -154,3 +154,42 @@ function supprElement(id)
         }
     });
 }
+
+function loadCmsStats() {
+    envoieAjax({
+        type: 'GET',
+        url: "cms.name/countResult",
+        async: false,
+        success: function (data) {
+            data = data.data;
+            var datasets = [];
+            var labels = [];
+            var result = {};
+            $.each(data, function (idx, elem) {
+                datasets.push(elem.count);
+                labels.push(elem._id.name);
+            })
+            result.datasets = datasets;
+            result.labels = labels;
+            var ctx = $('#cmsChart');
+            if(result !== false) {
+                const data = {
+                    datasets: [{
+                        data: result.datasets
+                    }],
+                    labels: result.labels
+                };
+                const cmsPieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: data
+                });
+            } else {
+                alert('erreur lors de la récupération des données');
+            }
+        },
+        error: function () {
+            alert('omg erreur');
+            return false;
+        }
+    });
+}
