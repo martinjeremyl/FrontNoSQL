@@ -67,13 +67,21 @@
     float: right;
 }
 
+#chartDiv {
+    margin: auto;
+}
+
+#chartDiv h2 {
+    text-align: center;
+}
+
+.dnone {
+    display: none !important;
+}
+
 /* KEYFRAMES */
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-.dnone {
-    display: none !important;
 }
