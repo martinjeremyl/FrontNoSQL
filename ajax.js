@@ -7,16 +7,17 @@ function envoieAjax(param)
 
 function toggleFormAjout()
 {
-   $('#containerTable, #formAjout').toggleClass('dnone');
+    $('#containerTable, #formAjout').toggleClass('dnone');
 }
 
 function createData()
 {
     $('#cache').toggleClass('dnone');
 
-    var data = {};
+    var data = {},
+        form = $('#formAjout');
 
-    $('#formAjout').serializeArray().map(function(x) {
+    form.serializeArray().map(function(x) {
         var res = x.name.split('$$');
         if(typeof data[res[0]] === "undefined") {
             data[res[0]] = {};
@@ -35,6 +36,7 @@ function createData()
                 alert('Error '+data.status+' : '+data.message);
             }
             else {
+                form.reset();
                 alert('Success : '+data.message);
             }
         },
