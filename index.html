@@ -28,8 +28,26 @@
 </nav>
 <input type="button" onclick="getAllData()" value="GOGOGO">
 
-<form id="formAjout" class="dnone">
+<form id="formAjout" class="dnone" onsubmit="createData(); return false;">
+    <h2>CMS</h2>
+    <label>Nom : <input type="text" name="cms[name]"></label>
+    <label>URL : <input type="text" name="cms[url]"></label>
+    <label>Version : <input type="text" name="cms[version]"></label>
+    <label>Domaine : <input type="text" name="cms[domain]"></label>
+    <label>Actifs : <input type="checkbox" name="cms[isActive]" value="1"></label>
+    <label>Plugins : <input type="text" name="cms[plugin]"></label>
+    <h2>Owner</h2>
+    <label>Mail : <input type="text" name="owner[email]"></label>
+    <label>Prénom : <input type="text" name="owner[firstname]"></label>
+    <label>Nom : <input type="text" name="owner[lastname]"></label>
+    <label>Téléphone : <input type="text" name="owner[phone]"></label>
+    <h2>Company</h2>
+    <label>Nom : <input type="text" name="company[name]"></label>
+    <label>C.A. : <input type="text" name="company[turnover]"></label>
+    <label>Pays : <input type="text" name="company[pays]"></label>
+    <label>Adresse : <input type="text" name="company[location]"></label>
 
+    <input type="submit">
 </form>
 
 <table id="example" class="table table-striped table-bordered" style="width:100%">
