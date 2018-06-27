@@ -17,9 +17,9 @@ $(document).ready(function() {
 });
 
 function loadAllData() {
-    $.ajax({
+    envoieAjax({
         method: 'get',
-        url: 'http://192.168.43.238:8888/ProjetMongo/src/routeur/allData',
+        url: 'allData',
         error: function (response) {
             alert('pas cool');
         },
