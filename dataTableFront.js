@@ -1,5 +1,18 @@
 $(document).ready(function() {
-    $('#allData').dataTable();
+    $('#allData').dataTable({
+        "language": {
+            "lengthMenu": "Afficher _MENU_ lignes par page",
+            "zeroRecords": "Aucun résultats",
+            "info": "Affichage de la page _PAGE_ sur _PAGES_",
+            "infoEmpty": "Aucun résultats",
+            "infoFiltered": "(_MAX_ lignes filtrés)",
+            "paginate": {
+                "previous": "Precedent",
+                "next": "Suivant"
+            },
+            "search": "Rechercher :"
+        }
+    });
     loadAllData();
 });
 
