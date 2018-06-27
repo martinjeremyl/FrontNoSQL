@@ -7,15 +7,15 @@ function envoieAjax(param)
 
 function toggleFormAjout()
 {
+    $('#formAjout')[0].reset();
     $('#containerTable, #formAjout').toggleClass('dnone');
 }
 
-function createData()
+function gestionData()
 {
-    $('#cache').toggleClass('dnone');
-
     var data = {},
-        form = $('#formAjout');
+        form = $('#formAjout'),
+        id = parseInt(form.attr('data-id'));
 
     form.serializeArray().map(function(x) {
         var res = x.name.split('$$');
@@ -24,6 +24,20 @@ function createData()
         }
         data[res[0]][res[1]] = x.value
     });
+
+    isNaN(id) || id === 0 ?
+        createData(data) :
+        modificationData(id, data);
+
+    return false;
+}
+
+/**
+ * @param {Array} data
+ */
+function createData(data)
+{
+    $('#cache').toggleClass('dnone');
 
     envoieAjax({
         type: 'POST',
@@ -36,7 +50,8 @@ function createData()
                 alert('Error '+data.status+' : '+data.message);
             }
             else {
-                form.reset();
+                toggleFormAjout();
+                loadAllData();
                 alert('Success : '+data.message);
             }
         },
@@ -44,27 +59,67 @@ function createData()
             $('#cache').toggleClass('dnone');
         }
     });
-
-    return false;
 }
 
 /**
- * @todo
- * {string} id
+ * @param {string} id
+ * @param {Array} data
  */
-function modifElem(id)
+function modificationData(id, data)
 {
     $('#cache').toggleClass('dnone');
     envoieAjax({
-        type: 'PUT',
+        type: 'POST',
         url: id+"/updateData",
-        data: {},
+        data: {
+            datas: JSON.stringify(data)
+        },
+        success: function(data) {
+            if(parseInt(data.status) !== 1) {
+                alert('Error '+data.status+' : '+data.message);
+            }
+            else {
+                toggleFormAjout();
+                loadAllData();
+                alert('Success : '+data.message);
+            }
+        },
+        complete: function () {
+            $('#cache').toggleClass('dnone');
+        }
+    });
+}
+
+/**
+ * @param {string} id
+ */
+function affichageModificationElem(id)
+{
+    $('#cache').toggleClass('dnone');
+    envoieAjax({
+        type: 'GET',
+        url: id+"/getData",
         success: function(data) {
             if(parseInt(data.status) !== 1) {
                 alert('Error '+data.status+' : '+data.message);
             }
             else {
                 alert('Success : '+data.message);
+                $('#formAjout').attr('data-id', data._id.$oid);
+                $('#nomCms').val(data.cms.name);
+                $('#urlCms').val(data.cms.url);
+                $('#versionCms').val(data.cms.version);
+                $('#domaineCms').val(data.cms.domain);
+                $('#pluginsCms').val(data.cms.plugin);
+                $('#mailOwner').val(data.owner.email);
+                $('#prenomOwner').val(data.owner.firstname);
+                $('#nomOwner').val(data.owner.lastname);
+                $('#phoneOwner').val(data.owner.phone);
+                $('#nomCompany').val(data.company.name);
+                $('#caCompany').val(data.company.turnover);
+                $('#paysCompany').val(data.company.country);
+                $('#adresseCompany').val(data.company.location);
+                toggleFormAjout();
             }
         },
         complete: function () {
@@ -74,7 +129,7 @@ function modifElem(id)
 }
 
 /**
- * {string} id
+ * @param {string} id
  */
 function supprElement(id)
 {
@@ -88,6 +143,7 @@ function supprElement(id)
             }
             else {
                 alert('Success : '+data.message);
+                loadAllData();
             }
         },
         complete: function () {

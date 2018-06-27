@@ -21,25 +21,25 @@
     </div>
 </nav>
 
-<form id="formAjout" class="dnone" onsubmit="return createData();">
-    <h2>CMS</h2>
-    <label>Nom : <input type="text" name="cms$$name"></label>
-    <label>URL : <input type="text" name="cms$$url"></label>
-    <label>Version : <input type="text" name="cms$$version"></label>
-    <label>Domaine : <input type="text" name="cms$$domain"></label>
-    <label>Plugins : <input type="text" name="cms$$plugin"></label>
-    <h2>Owner</h2>
-    <label>Mail : <input type="text" name="owner$$email"></label>
-    <label>Prénom : <input type="text" name="owner$$firstname"></label>
-    <label>Nom : <input type="text" name="owner$$lastname"></label>
-    <label>Téléphone : <input type="text" name="owner$$phone"></label>
-    <h2>Company</h2>
-    <label>Nom : <input type="text" name="company$$name"></label>
-    <label>C.A. : <input type="text" name="company$$turnover"></label>
-    <label>Pays : <input type="text" name="company$$country"></label>
-    <label>Adresse : <input type="text" name="company$$location"></label>
+<form id="formAjout" class="row no-gutters dnone" onsubmit="return gestionData();">
+    <h2 class="col-lg-11 offset-lg-1">CMS</h2>
+    <label class="col-lg-2 offset-lg-1">Nom : <input id="nomCms" class="fright" type="text" name="cms$$name"></label>
+    <label class="col-lg-2 offset-lg-1">URL : <input id="urlCms" class="fright" type="text" name="cms$$url"></label>
+    <label class="col-lg-2 offset-lg-1">Version : <input id="versionCms" class="fright" type="text" name="cms$$version"></label>
+    <label class="col-lg-2 offset-lg-1">Domaine : <input id="domaineCms" class="fright" type="text" name="cms$$domain"></label>
+    <label class="col-lg-2 offset-lg-1">Plugins : <input id="pluginsCms" class="fright" type="text" name="cms$$plugin"></label>
+    <h2 class="col-lg-11 offset-lg-1">Owner</h2>
+    <label class="col-lg-2 offset-lg-1">Mail : <input id="mailOwner" class="fright" type="text" name="owner$$email"></label>
+    <label class="col-lg-2 offset-lg-1">Prénom : <input id="prenomOwner" class="fright" type="text" name="owner$$firstname"></label>
+    <label class="col-lg-2 offset-lg-1">Nom : <input id="nomOwner" class="fright" type="text" name="owner$$lastname"></label>
+    <label class="col-lg-2 offset-lg-1">Téléphone : <input id="phoneOwner" class="fright" type="text" name="owner$$phone"></label>
+    <h2 class="col-lg-11 offset-lg-1">Company</h2>
+    <label class="col-lg-2 offset-lg-1">Nom : <input id="nomCompany" class="fright" type="text" name="company$$name"></label>
+    <label class="col-lg-2 offset-lg-1">C.A. : <input id="caCompany" class="fright" type="text" name="company$$turnover"></label>
+    <label class="col-lg-2 offset-lg-1">Pays : <input id="paysCompany" class="fright" type="text" name="company$$country"></label>
+    <label class="col-lg-2 offset-lg-1">Adresse : <input id="adresseCompany" class="fright" type="text" name="company$$location"></label>
 
-    <input type="submit">
+    <input type="submit" class="offset-lg-6">
 </form>
 
 <div class="container" id="containerTable">
