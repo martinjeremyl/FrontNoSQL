@@ -5,12 +5,15 @@ function envoieAjax(param)
     $.ajax(param);
 }
 
-function toggleFormAjout()
+function toggleFormAjout(clear_data_id)
 {
     var form = $('#formAjout');
-
-    form[0].reset();
-    form.attr('data-id', data._id.$oid);
+    
+    if(typeof clear_data_id === "undefined" || clear_data_id) {
+        form[0].reset();
+        form.removeAttr('data-id');
+    }
+    
     $('#containerTable, #formAjout').toggleClass('dnone');
 }
 
@@ -18,7 +21,7 @@ function gestionData()
 {
     var data = {},
         form = $('#formAjout'),
-        id = parseInt(form.attr('data-id'));
+        id = form.attr('data-id');
 
     form.serializeArray().map(function(x) {
         var res = x.name.split('$$');
@@ -28,7 +31,7 @@ function gestionData()
         data[res[0]][res[1]] = x.value
     });
 
-    isNaN(id) || id === 0 ?
+    typeof id === "undefined" || id === '' ?
         createData(data) :
         modificationData(id, data);
 
@@ -70,13 +73,12 @@ function createData(data)
  */
 function modificationData(id, data)
 {
+    console.log(encodeURI(JSON.stringify(data)));
     $('#cache').toggleClass('dnone');
     envoieAjax({
-        type: 'POST',
+        type: 'PUT',
         url: id+"/updateData",
-        data: {
-            datas: JSON.stringify(data)
-        },
+        data: JSON.stringify(data),
         success: function(data) {
             if(parseInt(data.status) !== 1) {
                 alert('Error '+data.status+' : '+data.message);
@@ -107,22 +109,21 @@ function affichageModificationElem(id)
                 alert('Error '+data.status+' : '+data.message);
             }
             else {
-                alert('Success : '+data.message);
-                $('#formAjout').attr('data-id', data._id.$oid);
-                $('#nomCms').val(data.cms.name);
-                $('#urlCms').val(data.cms.url);
-                $('#versionCms').val(data.cms.version);
-                $('#domaineCms').val(data.cms.domain);
-                $('#pluginsCms').val(data.cms.plugin);
-                $('#mailOwner').val(data.owner.email);
-                $('#prenomOwner').val(data.owner.firstname);
-                $('#nomOwner').val(data.owner.lastname);
-                $('#phoneOwner').val(data.owner.phone);
-                $('#nomCompany').val(data.company.name);
-                $('#caCompany').val(data.company.turnover);
-                $('#paysCompany').val(data.company.country);
-                $('#adresseCompany').val(data.company.location);
-                toggleFormAjout();
+                $('#formAjout').attr('data-id', data.data._id.$oid);
+                $('#nomCms').val(data.data.cms.name);
+                $('#urlCms').val(data.data.cms.url);
+                $('#versionCms').val(data.data.cms.version);
+                $('#domaineCms').val(data.data.cms.domain);
+                $('#pluginsCms').val(data.data.cms.plugin);
+                $('#mailOwner').val(data.data.owner.email);
+                $('#prenomOwner').val(data.data.owner.firstname);
+                $('#nomOwner').val(data.data.owner.lastname);
+                $('#phoneOwner').val(data.data.owner.phone);
+                $('#nomCompany').val(data.data.company.name);
+                $('#caCompany').val(data.data.company.turnover);
+                $('#paysCompany').val(data.data.company.country);
+                $('#adresseCompany').val(data.data.company.location);
+                toggleFormAjout(false);
             }
         },
         complete: function () {
