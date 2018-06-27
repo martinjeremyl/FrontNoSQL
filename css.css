@@ -1,4 +1,22 @@
 #cache {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.6;
+}
+
+#cache i {
+    font-size: 3em;
+    color: #FFF;
+    animation: spin 1s linear infinite;
+}
 
 }
 .navbar {

@@ -7,11 +7,22 @@ function envoieAjax(param)
 
 function getAllData()
 {
+    $('#cache').toggleClass('dnone');
     envoieAjax({
         type: 'GET',
         url: "allData",
         success: function(data) {
-            console.log(data);
+            Object.keys(data.data).map(function(index) {
+
+            })
+        },
+        complete: function () {
+            $('#cache').toggleClass('dnone');
         }
     });
+}
+
+function toggleFormAjout()
+{
+   $('#formAjout, #example').toggleClass('dnone');
 }
