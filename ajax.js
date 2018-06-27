@@ -22,24 +22,18 @@ function getAllData()
 
 function toggleFormAjout()
 {
-   $('#formAjout, #example').toggleClass('dnone');
+   $('#containerTable, #formAjout').toggleClass('dnone');
 }
 
 function createData()
 {
     $('#cache').toggleClass('dnone');
 
-    var data = {};
-
-    $('#formAjout').serializeArray().map(function(x) {
-        data[x.name] = x.value;
-    });
-
     envoieAjax({
         type: 'POST',
         url: "newData",
         data: {
-            datas: data
+            datas: $('#formAjout').serializeArray()
         },
         success: function(data) {
             if(parseInt(data.status) !== 1) {

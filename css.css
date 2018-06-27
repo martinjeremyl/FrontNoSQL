@@ -18,6 +18,10 @@
     animation: spin 1s linear infinite;
 }
 
+.dnone {
+    display: none !important;
+}
+
 .navbar {
     margin-bottom: 3vh;
 }
