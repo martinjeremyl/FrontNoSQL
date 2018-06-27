@@ -28,7 +28,7 @@ function toggleFormAjout()
 function createData()
 {
     $('#cache').toggleClass('dnone');
-
+    console.log($('#formAjout').serializeArray());
     envoieAjax({
         type: 'POST',
         url: "newData",
