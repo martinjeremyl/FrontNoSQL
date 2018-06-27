@@ -159,19 +159,20 @@ function supprElement(id)
 }
 
 function loadCmsStats() {
+    $('#cache').toggleClass('dnone');
     envoieAjax({
         type: 'GET',
         url: "cms.name/countResult",
         async: false,
         success: function (data) {
             data = data.data;
-            var datasets = [];
-            var labels = [];
-            var result = {};
+            var datasets = [],
+                labels = [],
+                result = {};
             $.each(data, function (idx, elem) {
                 datasets.push(elem.count);
                 labels.push(elem._id.filtre);
-            })
+            });
             result.datasets = datasets;
             result.labels = labels;
             var ctx = $('#cmsChart');
@@ -222,6 +223,9 @@ function loadCmsStats() {
         error: function () {
             alert('omg erreur');
             return false;
+        },
+        complete: function () {
+            $('#cache').toggleClass('dnone');
         }
     });
 }
