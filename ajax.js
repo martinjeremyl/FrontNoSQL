@@ -7,14 +7,29 @@ function envoieAjax(param)
 
 function toggleFormAjout(clear_data_id)
 {
-    var form = $('#formAjout');
+    var form = $('#formAjout'),
+        graphs = $('#'),
+        table = $('#containerTable');
     
     if(typeof clear_data_id === "undefined" || clear_data_id) {
         form[0].reset();
         form.removeAttr('data-id');
     }
-    
-    $('#containerTable, #formAjout').toggleClass('dnone');
+
+    if(form.is(':visible')) {
+        form.removeClass('dnone');
+        if(!table.hasClass('dnone')) {
+            table.addClass('dnone');
+        }
+
+        if(!graphs.hasClass('dnone')) {
+            graphs.addClass('dnone');
+        }
+    }
+    else {
+        form.addClass('dnone');
+        table.removeClass('dnone');
+    }
 }
 
 function gestionData()
