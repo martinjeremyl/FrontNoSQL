@@ -40,3 +40,23 @@
     box-shadow: 0 0 0 0.2rem rgb(255, 255, 255) !important;
 }
 
+#allData i {
+    font-size: 1.5em;
+}
+
+#allData .fa-pencil-alt {
+    padding-right: 15%;
+    padding-left: 15%;
+}
+
+#allData .fa-times,
+#allData .fa-pencil-alt
+{
+    cursor: pointer;
+}
+
+#allData .fa-times:hover,
+#allData .fa-pencil-alt:hover
+{
+    color: red;
+}

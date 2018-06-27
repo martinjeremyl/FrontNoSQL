@@ -29,7 +29,7 @@ function loadAllData() {
             $.each(data.data, function (idx, elem) {
                 var actionDiv = '';
                 if(elem.company !== undefined && elem.cms !== undefined)
-                    var divAction = "<i class=\"fas fa-pencil-alt\"></i><i class=\"fas fa-times\"></i>";
+                    var divAction = "<i class=\"fas fa-pencil-alt\" onclick='modifElem("+elem._id.$oid+")'></i><i class=\"fas fa-times\" onclick='supprElement("+elem._id.$oid+")'></i>";
                 table.row.add([elem.company.name, elem.company.country, elem.company.turnover, elem.cms.name, elem.cms.version, elem.cms.domain, divAction]).draw().node();
             });
         }
