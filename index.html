@@ -1,145 +1,148 @@
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-              integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" href="./css.css">
-        <meta charset="UTF-8">
-        <title>Front NoSQL</title>
-    </head>
-    <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">TP NoSQL</a>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="./css.css">
+    <meta charset="UTF-8">
+    <title>Front NoSQL</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">TP NoSQL</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#" onclick="toggleElementSinglePage(this)" data-role="linkNavbar"
-                       data-page="accueil">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="toggleElementSinglePage(this)" data-role="linkNavbar"
-                       data-page="form">Création</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="toggleElementSinglePage(this)" data-role="linkNavbar"
-                       data-page="graph">Graphiques</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div data-role="elementSinglePage" id="chartDiv" class="chart-container dnone"
-         style="position: relative; height:40vh; width:80vw">
-        <canvas id="cmsChart"></canvas>
-        <button class="btn btn-primary" onClick="loadCmsStats()">Test</button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" onclick="toggleElementSinglePage(this)" data-role="linkNavbar"
+                   data-page="accueil">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="toggleElementSinglePage(this)" data-role="linkNavbar"
+                   data-page="form">Création</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="toggleElementSinglePage(this)" data-role="linkNavbar"
+                   data-page="graph">Graphiques</a>
+            </li>
+        </ul>
     </div>
+</nav>
+<div data-role="elementSinglePage" id="chartDiv" class="chart-container dnone"
+     style="position: relative; height:40vh; width:80vw">
+    <canvas id="cmsChart"></canvas>
+    <button class="btn btn-primary" onClick="loadCmsStats()">Test</button>
+</div>
 
-    <form data-role="elementSinglePage" id="formAjout" class="container dnone" onsubmit="return gestionData();">
-        <div class="row">
-            <h2 class="col-lg-12">CMS</h2>
-            <div class="form-group col-lg-2">
-                <label class="">Nom <input id="nomCms" class="form-control fright" type="text"
-                                           name="cms$$name"></label>
-            </div>
-            <div class="form-group col-lg-2">
-
-                <label class="">Version <input id="versionCms" class="form-control fright" type="text"
-                                               name="cms$$version"></label>
-            </div>
-            <div class="form-group col-lg-2">
-
-                <label class="">Plugins <input id="pluginsCms" class="form-control fright" type="text"
-                                               name="cms$$plugin"></label>
-            </div>
-            <div class="form-group col-lg-3">
-
-                <label class="">Domaine <input id="domaineCms" class="form-control fright" type="text"
-                                               name="cms$$domain"></label>
-            </div>
-            <div class="form-group col-lg-3">
-
-                <label class="">URL <input id="urlCms" class="form-control fright" type="text"
-                                           name="cms$$url"></label>
-            </div>
+<form data-role="elementSinglePage" id="formAjout" class="container dnone" onsubmit="return gestionData();">
+    <div class="row">
+        <h2 class="col-lg-12">CMS</h2>
+        <div class="form-group col-lg-2">
+            <label class="">Nom <input id="nomCms" class="form-control fright" type="text"
+                                       name="cms$$name"></label>
         </div>
-        <div class="row">
-            <h2 class="col-lg-12">Owner</h2>
-            <div class="form-group col-lg-3">
-                <label class="">Mail<input id="mailOwner" class="form-control fright" type="text"
-                                           name="owner$$email"></label>
-            </div>
-            <div class="form-group col-lg-3">
-                <label class="">Prénom<input id="prenomOwner" class="form-control fright" type="text"
-                                             name="owner$$firstname"></label>
-            </div>
-            <div class="form-group col-lg-3">
-                <label class="">Nom<input id="nomOwner" class="form-control fright" type="text"
-                                          name="owner$$lastname"></label>
-            </div>
-            <div class="form-group col-lg-3">
-                <label class="">Téléphone<input id="phoneOwner" class="form-control fright" type="text"
-                                                name="owner$$phone"></label>
-            </div>
-        </div>
-        <div class="row">
-            <h2 class="col-lg-12">Company</h2>
-            <div class="form-group col-lg-3">
-                <label class="">Nom<input id="nomCompany" class="form-control fright" type="text"
-                                             name="company$$name"></label>
-            </div>
-            <div class="form-group col-lg-3">
-                <label class="">C.A.<input id="caCompany" class="form-control fright" type="text"
-                                              name="company$$turnover"></label>
-            </div>
-            <div class="form-group col-lg-3">
-                <label class="">Pays<input id="paysCompany" class="form-control fright" type="text"
-                                              name="company$$country"></label>
-            </div>
-            <div class="form-group col-lg-3">
-                <label class="">Adresse<input id="adresseCompany" class="form-control fright" type="text"
-                                                 name="company$$location"></label>
-            </div>
-        </div>
-        <div class="center">
-            <input type="submit" class="btn btn-success offset-lg-12">
-        </div>
-    </form>
+        <div class="form-group col-lg-2">
 
-    <div data-role="elementSinglePage" class="container" id="containerTable">
-        <table id="allData" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-            <tr>
-                <th>Nom société</th>
-                <th>Pays société</th>
-                <th>Turnover société</th>
-                <th>Nom du cms</th>
-                <th>Version du cms</th>
-                <th>Domaine de la société</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
+            <label class="">Version <input id="versionCms" class="form-control fright" type="text"
+                                           name="cms$$version"></label>
+        </div>
+        <div class="form-group col-lg-2">
 
-            </tbody>
-        </table>
+            <label class="">Plugins <input id="pluginsCms" class="form-control fright" type="text"
+                                           name="cms$$plugin"></label>
+        </div>
+        <div class="form-group col-lg-3">
+
+            <label class="">Domaine <input id="domaineCms" class="form-control fright" type="text"
+                                           name="cms$$domain"></label>
+        </div>
+        <div class="form-group col-lg-3">
+
+            <label class="">URL <input id="urlCms" class="form-control fright" type="text"
+                                       name="cms$$url"></label>
+        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    <script src="ajax.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="bootstrapDatatable.js"></script>
-    <script src="dataTableFront.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    </body>
-    </html>
+    <div class="row">
+        <h2 class="col-lg-12">Owner</h2>
+        <div class="form-group col-lg-3">
+            <label class="">Mail<input id="mailOwner" class="form-control fright" type="text"
+                                       name="owner$$email"></label>
+        </div>
+        <div class="form-group col-lg-3">
+            <label class="">Prénom<input id="prenomOwner" class="form-control fright" type="text"
+                                         name="owner$$firstname"></label>
+        </div>
+        <div class="form-group col-lg-3">
+            <label class="">Nom<input id="nomOwner" class="form-control fright" type="text"
+                                      name="owner$$lastname"></label>
+        </div>
+        <div class="form-group col-lg-3">
+            <label class="">Téléphone<input id="phoneOwner" class="form-control fright" type="text"
+                                            name="owner$$phone"></label>
+        </div>
+    </div>
+    <div class="row">
+        <h2 class="col-lg-12">Company</h2>
+        <div class="form-group col-lg-3">
+            <label class="">Nom<input id="nomCompany" class="form-control fright" type="text"
+                                      name="company$$name"></label>
+        </div>
+        <div class="form-group col-lg-3">
+            <label class="">C.A.<input id="caCompany" class="form-control fright" type="text"
+                                       name="company$$turnover"></label>
+        </div>
+        <div class="form-group col-lg-3">
+            <label class="">Pays<input id="paysCompany" class="form-control fright" type="text"
+                                       name="company$$country"></label>
+        </div>
+        <div class="form-group col-lg-3">
+            <label class="">Adresse<input id="adresseCompany" class="form-control fright" type="text"
+                                          name="company$$location"></label>
+        </div>
+    </div>
+    <div class="center">
+        <input type="submit" class="btn btn-success offset-lg-12">
+    </div>
+</form>
+
+<div data-role="elementSinglePage" class="container" id="containerTable">
+    <table id="allData" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+        <tr>
+            <th>Nom société</th>
+            <th>Pays société</th>
+            <th>Turnover société</th>
+            <th>Nom du cms</th>
+            <th>Version du cms</th>
+            <th>Domaine de la société</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+<div id="cache" class="dnone">
+    <i class="fas fa-spinner"></i>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="ajax.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="bootstrapDatatable.js"></script>
+<script src="dataTableFront.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+</body>
+</html>
