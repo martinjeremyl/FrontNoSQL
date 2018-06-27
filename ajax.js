@@ -75,7 +75,6 @@ function createData(data)
  */
 function modificationData(id, data)
 {
-    console.log(encodeURI(JSON.stringify(data)));
     $('#cache').toggleClass('dnone');
     envoieAjax({
         type: 'PUT',
@@ -175,7 +174,6 @@ function loadCmsStats() {
             result.datasets = datasets;
             result.labels = labels;
             var ctx = $('#cmsChart');
-            console.log(result);
             if(result !== false) {
                 const data = {
                     datasets: [{
