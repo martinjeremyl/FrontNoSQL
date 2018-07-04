@@ -42,6 +42,10 @@
     box-shadow: 0 0 0 0.2rem rgb(255, 255, 255) !important;
 }
 
+#allData td {
+    vertical-align: middle;
+}
+
 #allData i {
     font-size: 1.2em;
 }
