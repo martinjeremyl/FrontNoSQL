@@ -50,6 +50,10 @@ function loadAllData() {
 }
 
 var simplemaps_worldmap_mapdata = {};
+
+/**
+ * @param {Array} array
+ */
 function constructDataMap(array)
 {
     simplemaps_worldmap_mapdata = {
