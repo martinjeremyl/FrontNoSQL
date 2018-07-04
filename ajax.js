@@ -229,13 +229,16 @@ function loadCmsStats() {
 
 function toggleElementSinglePage(input)
 {
-    var element;
+    var element,
+        form = $('#formAjout');
 
     if($(input).data('page') === "graph") {
         element = '#chartDiv';
     }
     else if($(input).data('page') === "form") {
         element = '#formAjout';
+        form[0].reset();
+        form.removeAttr('data-id');
     }
     else if($(input).data('page') === "map") {
         element = '#map';

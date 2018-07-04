@@ -1656,9 +1656,10 @@ function constructDataMap(array)
                 };
             }
             else {
-                if(typeof simplemaps_worldmap_mapdata['locations'][elem.company.city]['cms'][elem.cms.name] === "undefined") {
-                    simplemaps_worldmap_mapdata['locations'][elem.company.city]['cms'][elem.cms.name] = 1;
-                }
+                typeof simplemaps_worldmap_mapdata['locations'][elem.company.city]['cms'][elem.cms.name] === "undefined" ?
+                    simplemaps_worldmap_mapdata['locations'][elem.company.city]['cms'][elem.cms.name] = 1 :
+                    simplemaps_worldmap_mapdata['locations'][elem.company.city]['cms'][elem.cms.name] += 1;
+
                 var description = '';
                 Object.keys(simplemaps_worldmap_mapdata['locations'][elem.company.city]['cms']).map(function (value) {
                     description += value + ' : '+simplemaps_worldmap_mapdata['locations'][elem.company.city]['cms'][value]+'<br>';
