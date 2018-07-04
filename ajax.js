@@ -1,6 +1,6 @@
 function envoieAjax(param)
 {
-    param['url'] = "http://192.168.43.238:8888/ProjetMongo/src/routeur/"+param['url'];
+    param['url'] = "http://localhost:8888/ProjetMongo/src/routeur/"+param['url'];
     param['datatype'] = "json";
     $.ajax(param);
 }
@@ -124,6 +124,7 @@ function affichageModificationElem(id)
                 $('#caCompany').val(data.data.company.turnover);
                 $('#paysCompany').val(data.data.company.country);
                 $('#adresseCompany').val(data.data.company.location);
+                $('#villeCompany').val(data.data.company.city);
                 toggleFormAjout(false);
             }
         },
@@ -217,7 +218,7 @@ function loadCmsStats() {
             }
         },
         error: function () {
-            alert('omg erreur');
+            alert("Aucune donnée n'a été récupérée.");
             return false;
         },
         complete: function () {
@@ -235,6 +236,9 @@ function toggleElementSinglePage(input)
     }
     else if($(input).data('page') === "form") {
         element = '#formAjout';
+    }
+    else if($(input).data('page') === "map") {
+        element = '#map';
     }
     else {
         element = '#containerTable';

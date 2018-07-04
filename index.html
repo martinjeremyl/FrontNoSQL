@@ -27,6 +27,10 @@
                 <a class="nav-link" href="#" onclick="toggleElementSinglePage(this);loadCmsStats();" data-role="linkNavbar"
                    data-page="graph">Graphiques</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="toggleElementSinglePage(this);" data-role="linkNavbar"
+                   data-page="map">Carte</a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -101,6 +105,10 @@
             <label class="">Adresse<input id="adresseCompany" class="form-control fright" type="text"
                                           name="company$$location"></label>
         </div>
+        <div class="form-group col-lg-3">
+            <label class="">Ville<input id="villeCompany" class="form-control fright" type="text"
+                                          name="company$$city"></label>
+        </div>
     </div>
     <div class="center">
         <input type="submit" class="btn btn-success offset-lg-12">
@@ -111,9 +119,10 @@
     <table id="allData" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr>
-            <th>Nom société</th>
-            <th>Pays société</th>
-            <th>Turnover société</th>
+            <th>Nom</th>
+            <th>Pays</th>
+            <th>Ville</th>
+            <th>C.A.</th>
             <th>Nom du cms</th>
             <th>Version du cms</th>
             <th>Domaine de la société</th>
@@ -125,9 +134,13 @@
         </tbody>
     </table>
 </div>
+
+<div id="map" data-role="elementSinglePage" class="dnone"></div>
+
 <div id="cache" class="dnone">
     <i class="fas fa-spinner"></i>
 </div>
+<footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -143,5 +156,6 @@
 <script src="bootstrapDatatable.js"></script>
 <script src="dataTableFront.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+</footer>
 </body>
 </html>
